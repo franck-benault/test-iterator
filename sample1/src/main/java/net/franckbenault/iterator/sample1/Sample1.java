@@ -24,14 +24,11 @@ public class Sample1 implements Iterator<String> {
 
 	@Override
 	public String next() {
-		// TODO Auto-generated method stub
 		return iterator.next();
 	}
 
 	@Override
 	public void remove() {
-		// TODO Auto-generated method stub
-		
+		throw new UnsupportedOperationException(); 
 	}
- //comment
 }
