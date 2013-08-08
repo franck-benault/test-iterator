@@ -10,6 +10,7 @@ import org.junit.Test;
 
 public class Sample1Test {
 
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
