@@ -8,12 +8,12 @@ public class Sample1 implements Iterator<String> {
 	
 	private Set<String> mySet = new HashSet<String>();
 	private Iterator<String> iterator;
-	
+
 	public Sample1() {
 		mySet.add("val1");
 		mySet.add("val2");
 		mySet.add("val3");
-		
+
 		iterator = mySet.iterator();
 	}
 
