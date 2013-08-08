@@ -6,12 +6,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
 
+import org.apache.log4j.Logger;
+
 public class Sample2 implements Iterator<String> {
+	
+	private static final Logger logger = Logger.getLogger(Sample2.class);
 	
 	private BufferedReader br;
 	private String line;
 	
 	public Sample2() throws IOException {
+		logger.info("open file");
 	    br = new BufferedReader(new FileReader("../sample2/src/main/resources/file.txt"));
 	    
 	    line = br.readLine();
@@ -29,7 +34,7 @@ public class Sample2 implements Iterator<String> {
 		try {
 			line = br.readLine();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}
 		return tempLine;
 	}
@@ -42,9 +47,10 @@ public class Sample2 implements Iterator<String> {
 	
 	public void close() {
 		try {
+			logger.info("close file");
 			br.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+			logger.error(e.getMessage());
 		}		
 	}
 
