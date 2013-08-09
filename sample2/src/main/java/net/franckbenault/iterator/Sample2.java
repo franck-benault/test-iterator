@@ -1,4 +1,4 @@
-package net.franckbenault.iterator.sample2;
+package net.franckbenault.iterator;
 
 
 import java.io.BufferedReader;

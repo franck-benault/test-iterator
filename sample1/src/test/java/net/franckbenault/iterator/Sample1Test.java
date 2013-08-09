@@ -1,8 +1,6 @@
-package net.franckbenault.iterator.sample2;
+package net.franckbenault.iterator;
 
 import static org.junit.Assert.*;
-
-import java.io.IOException;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -10,8 +8,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class Sample2Test {
+public class Sample1Test {
 
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -29,21 +28,15 @@ public class Sample2Test {
 	}
 
 	@Test
-	public void test() throws IOException  {
-		Sample2 sample = null;
-		try {
-			sample = new Sample2();
-			int counter = 0;
-			
-			while(sample.hasNext()) {
-				assertNotNull(sample.next());
-				counter++;
-			}
-			assertEquals(counter,3L);
-		} finally {
-			sample.close();
-		}
+	public void test() {
+		Sample1 sample = new Sample1();
+		int counter = 0;
 		
+		while(sample.hasNext()) {
+			assertNotNull(sample.next());
+			counter++;
+		}
+		assertEquals(counter,3L);
 	}
 
 }

@@ -1,4 +1,4 @@
-package net.franckbenault.iterator.sample1;
+package net.franckbenault.iterator;
 
 import java.util.HashSet;
 import java.util.Iterator;
