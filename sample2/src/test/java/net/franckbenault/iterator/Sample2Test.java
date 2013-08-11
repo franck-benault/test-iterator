@@ -28,6 +28,9 @@ public class Sample2Test {
 	public void tearDown() throws Exception {
 	}
 
+	/*
+	 * test with File1 no comment
+	 */
 	@Test
 	public void testWithFile1() throws IOException  {
 		Sample2 sample = null;
@@ -46,6 +49,10 @@ public class Sample2Test {
 		
 	}
 	
+	/*
+	 * test with file2
+	 * file with several lines in comment
+	 */
 	@Test
 	public void testWithFile2() throws IOException  {
 		Sample2 sample = null;
@@ -60,10 +67,30 @@ public class Sample2Test {
 			assertEquals(counter,3L);
 		} finally {
 			sample.close();
-		}
-		
+		}	
 	}
 
+	/*
+	 * test with file3
+	 * file with all lines in comment
+	 */
+	@Test
+	public void testWithFile3() throws IOException  {
+		Sample2 sample = null;
+		try {
+			sample = new Sample2("../sample2/src/main/resources/file3.txt");
+			int counter = 0;
+			
+			while(sample.hasNext()) {
+				assertNotNull(sample.next());
+				counter++;
+			}
+			assertEquals(counter,0L);
+		} finally {
+			sample.close();
+		}	
+	}
+	
 	@Test(expected=IOException.class)
 	public void testWithWrongFile() throws IOException  {
 		

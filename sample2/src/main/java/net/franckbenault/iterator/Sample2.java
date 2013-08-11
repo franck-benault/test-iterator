@@ -20,8 +20,8 @@ public class Sample2 implements Iterator<String> {
 		logger.info("open file "+fileNameInput);
 	    br = new BufferedReader(new FileReader(fileNameInput));
 	    
-	    line = br.readLine();
-
+	    line = getNextValidLine(); 
+	    
 	}
 
 	@Override
