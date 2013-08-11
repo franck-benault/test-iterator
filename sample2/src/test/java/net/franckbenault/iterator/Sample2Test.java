@@ -29,10 +29,28 @@ public class Sample2Test {
 	}
 
 	@Test
-	public void test() throws IOException  {
+	public void testWithFile1() throws IOException  {
 		Sample2 sample = null;
 		try {
-			sample = new Sample2();
+			sample = new Sample2("../sample2/src/main/resources/file1.txt");
+			int counter = 0;
+			
+			while(sample.hasNext()) {
+				assertNotNull(sample.next());
+				counter++;
+			}
+			assertEquals(counter,4L);
+		} finally {
+			sample.close();
+		}
+		
+	}
+	
+	@Test
+	public void testWithFile2() throws IOException  {
+		Sample2 sample = null;
+		try {
+			sample = new Sample2("../sample2/src/main/resources/file2.txt");
 			int counter = 0;
 			
 			while(sample.hasNext()) {
@@ -46,4 +64,12 @@ public class Sample2Test {
 		
 	}
 
+	@Test(expected=IOException.class)
+	public void testWithWrongFile() throws IOException  {
+		
+		new Sample2("WrongFileName");
+
+
+		
+	}
 }

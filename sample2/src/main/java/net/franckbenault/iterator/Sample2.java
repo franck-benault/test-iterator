@@ -12,12 +12,13 @@ public class Sample2 implements Iterator<String> {
 	
 	private static final Logger logger = Logger.getLogger(Sample2.class);
 	
+
 	private BufferedReader br;
 	private String line;
 	
-	public Sample2() throws IOException {
-		logger.info("open file");
-	    br = new BufferedReader(new FileReader("../sample2/src/main/resources/file.txt"));
+	public Sample2(String fileNameInput) throws IOException {
+		logger.info("open file "+fileNameInput);
+	    br = new BufferedReader(new FileReader(fileNameInput));
 	    
 	    line = br.readLine();
 
@@ -31,12 +32,46 @@ public class Sample2 implements Iterator<String> {
 	@Override
 	public String next() {
 		String tempLine = line;
+		
+		line = getNextValidLine(); 
+		return tempLine;
+	}
+	
+	
+	private String readLine() {
+		String tempLine = null;
+		
 		try {
-			line = br.readLine();
+			tempLine = br.readLine();
 		} catch (IOException e) {
 			logger.error(e.getMessage());
 		}
+	
 		return tempLine;
+	}
+	
+	private String getNextValidLine() {
+		String tempLine = readLine();
+		boolean isValid = isValid(tempLine);
+		logger.info("check "+tempLine+" "+isValid);
+		
+		while(!isValid && tempLine!=null) {
+			tempLine = readLine();
+			isValid = isValid(tempLine);
+		}
+		return tempLine;
+	}
+	
+	private boolean isValid(String line) {
+		
+		if(line == null)
+			return false;
+		
+		if (line.startsWith("#"))
+			return false;
+		else
+			return true;	
+				
 	}
 
 	@Override
