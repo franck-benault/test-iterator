@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class Sample2Test {
+public class StringIteratorTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -33,18 +33,18 @@ public class Sample2Test {
 	 */
 	@Test
 	public void testWithFile1() throws IOException  {
-		Sample2 sample = null;
+		StringIterator iterator = null;
 		try {
-			sample = new Sample2("../sample2/src/main/resources/file1.txt");
+			iterator = new StringIterator("../sample2/src/main/resources/file1.txt");
 			int counter = 0;
 			
-			while(sample.hasNext()) {
-				assertNotNull(sample.next());
+			while(iterator.hasNext()) {
+				assertNotNull(iterator.next());
 				counter++;
 			}
 			assertEquals(counter,4L);
 		} finally {
-			sample.close();
+			iterator.close();
 		}
 		
 	}
@@ -55,18 +55,18 @@ public class Sample2Test {
 	 */
 	@Test
 	public void testWithFile2() throws IOException  {
-		Sample2 sample = null;
+		StringIterator iterator = null;
 		try {
-			sample = new Sample2("../sample2/src/main/resources/file2.txt");
+			iterator = new StringIterator("../sample2/src/main/resources/file2.txt");
 			int counter = 0;
 			
-			while(sample.hasNext()) {
-				assertNotNull(sample.next());
+			while(iterator.hasNext()) {
+				assertNotNull(iterator.next());
 				counter++;
 			}
 			assertEquals(counter,3L);
 		} finally {
-			sample.close();
+			iterator.close();
 		}	
 	}
 
@@ -76,25 +76,25 @@ public class Sample2Test {
 	 */
 	@Test
 	public void testWithFile3() throws IOException  {
-		Sample2 sample = null;
+		StringIterator iterator = null;
 		try {
-			sample = new Sample2("../sample2/src/main/resources/file3.txt");
+			iterator = new StringIterator("../sample2/src/main/resources/file3.txt");
 			int counter = 0;
 			
-			while(sample.hasNext()) {
-				assertNotNull(sample.next());
+			while(iterator.hasNext()) {
+				assertNotNull(iterator.next());
 				counter++;
 			}
 			assertEquals(counter,0L);
 		} finally {
-			sample.close();
+			iterator.close();
 		}	
 	}
 	
 	@Test(expected=IOException.class)
 	public void testWithWrongFile() throws IOException  {
 		
-		new Sample2("WrongFileName");
+		new StringIterator("WrongFileName");
 
 
 		

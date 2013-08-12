@@ -8,15 +8,15 @@ import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 
-public class Sample2 implements Iterator<String> {
+public class StringIterator implements Iterator<String> {
 	
-	private static final Logger logger = Logger.getLogger(Sample2.class);
+	private static final Logger logger = Logger.getLogger(StringIterator.class);
 	
 
 	private BufferedReader br;
 	private String line;
 	
-	public Sample2(String fileNameInput) throws IOException {
+	public StringIterator(String fileNameInput) throws IOException {
 		logger.info("open file "+fileNameInput);
 	    br = new BufferedReader(new FileReader(fileNameInput));
 	    
