@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class Sample1Test {
+public class StringIteratorTest {
 
 	
 	@BeforeClass
@@ -29,11 +29,11 @@ public class Sample1Test {
 
 	@Test
 	public void test() {
-		Sample1 sample = new Sample1();
+		StringIterator iterator = new StringIterator();
 		int counter = 0;
 		
-		while(sample.hasNext()) {
-			assertNotNull(sample.next());
+		while(iterator.hasNext()) {
+			assertNotNull(iterator.next());
 			counter++;
 		}
 		assertEquals(counter,3L);

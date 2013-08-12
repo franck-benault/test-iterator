@@ -6,15 +6,15 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-public class Sample1 implements Iterator<String> {
+public class StringIterator implements Iterator<String> {
 	
-	private static final Logger logger = Logger.getLogger(Sample1.class);
+	private static final Logger logger = Logger.getLogger(StringIterator.class);
 
 	
 	private Set<String> mySet = new HashSet<String>();
 	private Iterator<String> iterator;
 
-	public Sample1() {
+	public StringIterator() {
 		logger.info("fill the set");
 		mySet.add("val1");
 		mySet.add("val2");
