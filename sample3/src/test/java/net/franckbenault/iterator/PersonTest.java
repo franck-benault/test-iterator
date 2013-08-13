@@ -31,20 +31,20 @@ public class PersonTest {
 	public void testPerson1()  {
 		Person person =new Person("AA:BB:34");
 		assertNotNull(person);
-		
+		assertTrue(person.check());
 	}
 	
 	@Test
 	public void testPersonNullInput()  {
 		Person person =new Person(null);
 		assertNotNull(person);
-		
+		assertTrue(!person.check());
 	}
 	
 	@Test
 	public void testPersonWrongAge()  {
 		Person person =new Person("AA:BB:E4");
 		assertNotNull(person);
-		
+		assertTrue(!person.check());
 	}
 }

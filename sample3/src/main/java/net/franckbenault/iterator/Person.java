@@ -44,6 +44,15 @@ public class Person {
 	}
 	
 	public boolean check() {
+		if(age==null)
+			return false;
+		
+		if (firstName==null)
+			return false;
+
+		if (lastName==null)
+			return false;
+		
 		return true;
 	}
 
