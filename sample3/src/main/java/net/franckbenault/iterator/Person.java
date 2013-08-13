@@ -1,12 +1,16 @@
 package net.franckbenault.iterator;
 
+import org.apache.log4j.Logger;
+
 public class Person {
+	
+	private static final Logger logger = Logger.getLogger(Person.class);
 	
 	private String firstName;
 	
 	private String lastName;
 	
-	private int age;
+	private Integer age;
 	
 	public Person(String line) {
 		String tab[] = null;
@@ -18,8 +22,12 @@ public class Person {
 		if(tab!=null && tab.length>=1)
 			lastName=tab[1];
 		if(tab!=null && tab.length>=2)
-			age=Integer.valueOf(tab[2]);
-		
+			try {
+				age=Integer.valueOf(tab[2]);
+			} catch (java.lang.NumberFormatException e) {
+				logger.error(e);
+			}
+			
 		
 	}
 

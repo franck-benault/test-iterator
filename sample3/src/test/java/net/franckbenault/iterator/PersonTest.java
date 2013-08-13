@@ -6,7 +6,6 @@ import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 public class PersonTest {
@@ -38,6 +37,13 @@ public class PersonTest {
 	@Test
 	public void testPersonNullInput()  {
 		Person person =new Person(null);
+		assertNotNull(person);
+		
+	}
+	
+	@Test
+	public void testPersonWrongAge()  {
+		Person person =new Person("AA:BB:E4");
 		assertNotNull(person);
 		
 	}
