@@ -1,8 +1,6 @@
 package net.franckbenault.iterator;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -34,6 +32,7 @@ public class PersonIterator implements Iterator<Person> {
 		Person tempPerson = person;
 		
 		person = getNextValidPerson(); 
+
 		return tempPerson;
 	}
 	
@@ -41,16 +40,31 @@ public class PersonIterator implements Iterator<Person> {
 
 	
 	private Person getNextValidPerson() {
-		Person tempPerson = new Person(stringIterator.next());
+		String line = stringIterator.next();
+		boolean isValid = false;
+		Person tempPerson =null;
+		//return only valid person
+		Person res = null;
 		
-		boolean isValid = person.check();
-		//logger.info("check "+tempLine+" "+isValid);
-		
-		while(!isValid && person!=null) {
-			tempPerson = new Person(stringIterator.next());
-			isValid = person.check();
+		if(line!=null) {
+			tempPerson = new Person(line);
+			isValid = tempPerson.check();
+			if(isValid)
+				res = tempPerson;
 		}
-		return person;
+		
+		
+		while(!isValid && line!=null) {
+			line = stringIterator.next();
+			if(line!=null) {
+				tempPerson = new Person(line);
+				isValid = tempPerson.check();
+				if(isValid)
+					res = tempPerson;
+			}
+		}
+		logger.info("tempPerson "+tempPerson+" "+isValid);
+		return res;
 	}
 	
 	
