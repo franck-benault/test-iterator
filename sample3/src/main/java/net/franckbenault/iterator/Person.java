@@ -39,7 +39,7 @@ public class Person {
 		return lastName;
 	}
 
-	public int getAge() {
+	public Integer getAge() {
 		return age;
 	}
 	
@@ -47,6 +47,12 @@ public class Person {
 		if(age==null)
 			return false;
 		
+		if(age<0)
+			return false;
+		
+		if(age>122)
+			return false;
+			
 		if (firstName==null)
 			return false;
 

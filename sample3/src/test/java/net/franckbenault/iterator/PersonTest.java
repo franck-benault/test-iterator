@@ -42,9 +42,26 @@ public class PersonTest {
 	}
 	
 	@Test
-	public void testPersonWrongAge()  {
+	public void testPersonWrongAgeNull()  {
 		Person person =new Person("AA:BB:E4");
 		assertNotNull(person);
+		assertNull(person.getAge());
+		assertTrue(!person.check());
+	}
+	
+	@Test
+	public void testPersonWrongAgeNegative()  {
+		Person person =new Person("AA:BB:-4");
+		assertNotNull(person);
+		assertNotNull(person.getAge());
+		assertTrue(!person.check());
+	}
+	
+	@Test
+	public void testPersonWrongAgeTooOld()  {
+		Person person =new Person("AA:BB:140");
+		assertNotNull(person);
+		assertNotNull(person.getAge());
 		assertTrue(!person.check());
 	}
 }

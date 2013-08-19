@@ -66,7 +66,7 @@ public class PersonIteratorTest {
 				assertNotNull(person);
 				counter++;
 			}
-			assertEquals(counter,2L);
+			assertEquals(counter,1L);
 		} finally {
 			iterator.close();
 		}	
