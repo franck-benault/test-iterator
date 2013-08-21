@@ -1,0 +1,6 @@
+A:A:12
+#this is a comment
+#this is a second comment
+B:B:-3
+C:C:C
+#DDD
