@@ -3,6 +3,7 @@ package net.franckbenault.iterator;
 
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -14,9 +15,9 @@ public class PersonIterator implements Iterator<Person> {
 	private Person person;
 	private StringIterator stringIterator;
 	
-	public PersonIterator(String fileNameInput) throws IOException {
-		logger.info("open file "+fileNameInput);
-		stringIterator = new StringIterator(fileNameInput);
+	public PersonIterator(Set<String> fileNamesInput) throws IOException {
+		logger.info("open file "+fileNamesInput);
+		stringIterator = new StringIterator(fileNamesInput);
 	    
 	    person = getNextValidPerson(); 
 	    

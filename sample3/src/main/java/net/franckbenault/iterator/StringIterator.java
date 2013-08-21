@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 
@@ -16,9 +17,9 @@ public class StringIterator implements Iterator<String> {
 	private BufferedReader br;
 	private String line;
 	
-	public StringIterator(String fileNameInput) throws IOException {
-		logger.info("open file "+fileNameInput);
-	    br = new BufferedReader(new FileReader(fileNameInput));
+	public StringIterator(Set<String> fileNamesInput) throws IOException {
+		logger.info("open file "+fileNamesInput);
+	    br = new BufferedReader(new FileReader(fileNamesInput.iterator().next()));
 	    
 	    line = getNextValidLine(); 
 	    

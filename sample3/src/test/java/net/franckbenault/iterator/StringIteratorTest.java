@@ -3,6 +3,8 @@ package net.franckbenault.iterator;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,7 +37,9 @@ public class StringIteratorTest {
 	public void testWithFile1() throws IOException  {
 		StringIterator iterator = null;
 		try {
-			iterator = new StringIterator("../sample3/src/main/resources/file1.txt");
+			Set<String> fileNames = new HashSet<String>();
+			fileNames.add("../sample4/src/main/resources/file1.txt");
+			iterator = new StringIterator(fileNames);
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -57,7 +61,10 @@ public class StringIteratorTest {
 	public void testWithFile2() throws IOException  {
 		StringIterator iterator = null;
 		try {
-			iterator = new StringIterator("../sample3/src/main/resources/file2.txt");
+			Set<String> fileNames = new HashSet<String>();
+			fileNames.add("../sample4/src/main/resources/file2.txt");
+			iterator = new StringIterator(fileNames);
+			
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -78,7 +85,9 @@ public class StringIteratorTest {
 	public void testWithFile3() throws IOException  {
 		StringIterator iterator = null;
 		try {
-			iterator = new StringIterator("../sample3/src/main/resources/file3.txt");
+			Set<String> fileNames = new HashSet<String>();
+			fileNames.add("../sample4/src/main/resources/file3.txt");
+			iterator = new StringIterator(fileNames);
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -94,7 +103,9 @@ public class StringIteratorTest {
 	@Test(expected=IOException.class)
 	public void testWithWrongFile() throws IOException  {
 		
-		new StringIterator("WrongFileName");
+		Set<String> fileNames = new HashSet<String>();
+		fileNames.add("WrongFileName");
+		new StringIterator(fileNames);
 
 
 		
