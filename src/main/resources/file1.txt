@@ -1,4 +1,4 @@
-AAA
-BBB
-CCC
-DDD
+A:A:1
+A:A:1
+A:A:1
+A:A:1

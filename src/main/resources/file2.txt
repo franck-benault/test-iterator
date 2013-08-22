@@ -1,6 +1,6 @@
-AAA
+A:A:12
 #this is a comment
 #this is a second comment
-BBB
-CCC
+B:B:-3
+C:C:C
 #DDD

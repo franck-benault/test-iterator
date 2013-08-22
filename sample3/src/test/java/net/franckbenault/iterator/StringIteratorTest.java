@@ -38,7 +38,7 @@ public class StringIteratorTest {
 		StringIterator iterator = null;
 		try {
 			Set<String> fileNames = new HashSet<String>();
-			fileNames.add("../sample4/src/main/resources/file1.txt");
+			fileNames.add("../src/main/resources/file1.txt");
 			iterator = new StringIterator(fileNames);
 			int counter = 0;
 			
@@ -62,7 +62,7 @@ public class StringIteratorTest {
 		StringIterator iterator = null;
 		try {
 			Set<String> fileNames = new HashSet<String>();
-			fileNames.add("../sample4/src/main/resources/file2.txt");
+			fileNames.add("../src/main/resources/file2.txt");
 			iterator = new StringIterator(fileNames);
 			
 			int counter = 0;
@@ -86,7 +86,7 @@ public class StringIteratorTest {
 		StringIterator iterator = null;
 		try {
 			Set<String> fileNames = new HashSet<String>();
-			fileNames.add("../sample4/src/main/resources/file3.txt");
+			fileNames.add("../src/main/resources/file3.txt");
 			iterator = new StringIterator(fileNames);
 			int counter = 0;
 			

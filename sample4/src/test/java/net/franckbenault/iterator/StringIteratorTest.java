@@ -35,7 +35,7 @@ public class StringIteratorTest {
 	public void testWithFile1() throws IOException  {
 		StringIterator iterator = null;
 		try {
-			iterator = new StringIterator("../sample3/src/main/resources/file1.txt");
+			iterator = new StringIterator("../src/main/resources/file1.txt");
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -57,7 +57,7 @@ public class StringIteratorTest {
 	public void testWithFile2() throws IOException  {
 		StringIterator iterator = null;
 		try {
-			iterator = new StringIterator("../sample3/src/main/resources/file2.txt");
+			iterator = new StringIterator("../src/main/resources/file2.txt");
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -78,7 +78,7 @@ public class StringIteratorTest {
 	public void testWithFile3() throws IOException  {
 		StringIterator iterator = null;
 		try {
-			iterator = new StringIterator("../sample3/src/main/resources/file3.txt");
+			iterator = new StringIterator("../src/main/resources/file3.txt");
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -90,6 +90,8 @@ public class StringIteratorTest {
 			iterator.close();
 		}	
 	}
+
+	
 	
 	@Test(expected=IOException.class)
 	public void testWithWrongFile() throws IOException  {

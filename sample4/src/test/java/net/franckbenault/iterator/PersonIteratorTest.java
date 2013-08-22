@@ -35,7 +35,7 @@ public class PersonIteratorTest {
 	public void testWithFile1() throws IOException  {
 		PersonIterator iterator = null;
 		try {
-			iterator = new PersonIterator("../sample3/src/main/resources/file1.txt");
+			iterator = new PersonIterator("../src/main/resources/file1.txt");
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -57,7 +57,7 @@ public class PersonIteratorTest {
 	public void testWithFile2() throws IOException  {
 		PersonIterator iterator = null;
 		try {
-			iterator = new PersonIterator("../sample3/src/main/resources/file2.txt");
+			iterator = new PersonIterator("../src/main/resources/file2.txt");
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -80,7 +80,7 @@ public class PersonIteratorTest {
 	public void testWithFile3() throws IOException  {
 		PersonIterator iterator = null;
 		try {
-			iterator = new PersonIterator("../sample3/src/main/resources/file3.txt");
+			iterator = new PersonIterator("../src/main/resources/file3.txt");
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
