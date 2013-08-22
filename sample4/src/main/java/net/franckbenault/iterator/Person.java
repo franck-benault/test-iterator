@@ -19,9 +19,9 @@ public class Person {
 		
 		if(tab!=null)
 			firstName=tab[0];
-		if(tab!=null && tab.length>=1)
+		if(tab!=null && tab.length>1)
 			lastName=tab[1];
-		if(tab!=null && tab.length>=2)
+		if(tab!=null && tab.length>2)
 			try {
 				age=Integer.valueOf(tab[2]);
 			} catch (java.lang.NumberFormatException e) {

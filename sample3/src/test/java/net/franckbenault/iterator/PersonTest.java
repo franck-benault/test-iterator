@@ -26,7 +26,26 @@ public class PersonTest {
 	public void tearDown() throws Exception {
 	}
 
-
+	/*
+	 * input string without separator
+	 */
+	@Test
+	public void testPerson0()  {
+		Person person =new Person("AABB34");
+		assertNotNull(person);
+		assertTrue(!person.check());
+	}
+	
+	/*
+	 * input string with only one separator
+	 */
+	@Test
+	public void testPerson0bis()  {
+		Person person =new Person("AA:BB34");
+		assertNotNull(person);
+		assertTrue(!person.check());
+	}
+	
 	@Test
 	public void testPerson1()  {
 		Person person =new Person("AA:BB:34");
