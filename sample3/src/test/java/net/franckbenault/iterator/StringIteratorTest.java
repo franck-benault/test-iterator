@@ -37,9 +37,7 @@ public class StringIteratorTest {
 	public void testWithFile1() throws IOException  {
 		StringIterator iterator = null;
 		try {
-			Set<String> fileNames = new HashSet<String>();
-			fileNames.add("../src/main/resources/file1.txt");
-			iterator = new StringIterator(fileNames);
+			iterator = new StringIterator("../src/main/resources/file1.txt");
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -61,9 +59,8 @@ public class StringIteratorTest {
 	public void testWithFile2() throws IOException  {
 		StringIterator iterator = null;
 		try {
-			Set<String> fileNames = new HashSet<String>();
-			fileNames.add("../src/main/resources/file2.txt");
-			iterator = new StringIterator(fileNames);
+
+			iterator = new StringIterator("../src/main/resources/file2.txt");
 			
 			int counter = 0;
 			
@@ -85,9 +82,8 @@ public class StringIteratorTest {
 	public void testWithFile3() throws IOException  {
 		StringIterator iterator = null;
 		try {
-			Set<String> fileNames = new HashSet<String>();
-			fileNames.add("../src/main/resources/file3.txt");
-			iterator = new StringIterator(fileNames);
+
+			iterator = new StringIterator("../src/main/resources/file3.txt");
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -103,9 +99,7 @@ public class StringIteratorTest {
 	@Test(expected=IOException.class)
 	public void testWithWrongFile() throws IOException  {
 		
-		Set<String> fileNames = new HashSet<String>();
-		fileNames.add("WrongFileName");
-		new StringIterator(fileNames);
+		new StringIterator("WrongFileName");
 
 
 		

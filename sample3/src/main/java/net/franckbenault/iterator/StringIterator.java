@@ -17,9 +17,9 @@ public class StringIterator implements Iterator<String> {
 	private BufferedReader br;
 	private String line;
 	
-	public StringIterator(Set<String> fileNamesInput) throws IOException {
-		logger.info("open file "+fileNamesInput);
-	    br = new BufferedReader(new FileReader(fileNamesInput.iterator().next()));
+	public StringIterator(String fileNameInput) throws IOException {
+		logger.info("open file "+fileNameInput);
+	    br = new BufferedReader(new FileReader(fileNameInput));
 	    
 	    line = getNextValidLine(); 
 	    
