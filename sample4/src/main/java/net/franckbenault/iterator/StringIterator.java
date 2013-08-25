@@ -66,24 +66,24 @@ public class StringIterator implements Iterator<String> {
 	}
 	
 	private String getNextValidLine() {
-		String tempLine = readLine();
-		if(tempLine==null && iterator.hasNext()) {
-			openNextFile(iterator.next());
-			tempLine = readLine();
-		}
+		String tempLine = getNextLine();
 		boolean isValid = isValid(tempLine);
-		logger.info("check "+tempLine+" "+isValid);
 		
 		while(!isValid && tempLine!=null) {
-			tempLine = readLine();
-			if(tempLine==null && iterator.hasNext()) {
-				openNextFile(iterator.next());
-				tempLine = readLine();
-			}
-			
+			tempLine = getNextLine();	
 			isValid = isValid(tempLine);
 		}
 		logger.info("getNextValidLine "+tempLine);
+		return tempLine;
+	}
+	
+	private String getNextLine() {
+		String tempLine = readLine();		
+		while(tempLine==null && iterator.hasNext()) {
+			openNextFile(iterator.next());
+			tempLine = readLine();
+		}
+		logger.info("getNextLine "+tempLine);
 		return tempLine;
 	}
 	
@@ -94,8 +94,10 @@ public class StringIterator implements Iterator<String> {
 		
 		if (line.startsWith("#"))
 			return false;
-		else
+		else {
+			logger.info(""+line+" is valid");
 			return true;	
+		}
 				
 	}
 
