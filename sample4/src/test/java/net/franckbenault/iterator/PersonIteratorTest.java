@@ -93,11 +93,22 @@ public class PersonIteratorTest {
 		}	
 	}
 	
-	@Test(expected=IOException.class)
+	@Test
 	public void testWithWrongFile() throws IOException  {
 		
-		new PersonIterator("WrongFileName");
-
+		PersonIterator iterator = null;
+		try {
+			iterator = new PersonIterator("WrongFileName");
+			int counter = 0;
+			
+			while(iterator.hasNext()) {
+				assertNotNull(iterator.next());
+				counter++;
+			}
+			assertEquals(counter,0L);
+		} finally {
+			iterator.close();
+		}
 
 		
 	}

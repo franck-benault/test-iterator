@@ -2,6 +2,7 @@ package net.franckbenault.iterator;
 
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
@@ -16,13 +17,14 @@ public class StringIterator implements Iterator<String> {
 
 	private BufferedReader br;
 	private String line;
+	private Iterator<String> iterator;
 	
 	public StringIterator(Set<String> fileNamesInput) throws IOException {
 		
-		String fileNameInput = fileNamesInput.iterator().next();
-		logger.info("open file "+fileNameInput);
-	    br = new BufferedReader(new FileReader(fileNameInput));
-	    
+		iterator = fileNamesInput.iterator();
+		String fileNameInput = iterator.next();
+
+		openNextFile(fileNameInput);
 	    line = getNextValidLine(); 
 	    
 	}
@@ -40,12 +42,22 @@ public class StringIterator implements Iterator<String> {
 		return tempLine;
 	}
 	
+	private void openNextFile(String fileNameInput) {
+		logger.info("open file "+fileNameInput);
+	    try {
+			br = new BufferedReader(new FileReader(fileNameInput));
+		} catch (FileNotFoundException e) {
+			logger.error(e.getMessage());
+		}
+	}
+	
 	
 	private String readLine() {
 		String tempLine = null;
 		
 		try {
-			tempLine = br.readLine();
+			if (br!=null)
+				tempLine = br.readLine();
 		} catch (IOException e) {
 			logger.error(e.getMessage());
 		}
@@ -55,13 +67,23 @@ public class StringIterator implements Iterator<String> {
 	
 	private String getNextValidLine() {
 		String tempLine = readLine();
+		if(tempLine==null && iterator.hasNext()) {
+			openNextFile(iterator.next());
+			tempLine = readLine();
+		}
 		boolean isValid = isValid(tempLine);
 		logger.info("check "+tempLine+" "+isValid);
 		
 		while(!isValid && tempLine!=null) {
 			tempLine = readLine();
+			if(tempLine==null && iterator.hasNext()) {
+				openNextFile(iterator.next());
+				tempLine = readLine();
+			}
+			
 			isValid = isValid(tempLine);
 		}
+		logger.info("getNextValidLine "+tempLine);
 		return tempLine;
 	}
 	
@@ -86,7 +108,8 @@ public class StringIterator implements Iterator<String> {
 	public void close() {
 		try {
 			logger.info("close file");
-			br.close();
+			if(br!=null)
+				br.close();
 		} catch (IOException e) {
 			logger.error(e.getMessage());
 		}		
