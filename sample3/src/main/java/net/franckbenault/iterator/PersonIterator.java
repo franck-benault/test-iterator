@@ -3,7 +3,6 @@ package net.franckbenault.iterator;
 
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 
