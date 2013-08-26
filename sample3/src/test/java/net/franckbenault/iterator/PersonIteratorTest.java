@@ -3,8 +3,7 @@ package net.franckbenault.iterator;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+
 
 import org.junit.After;
 import org.junit.AfterClass;

@@ -5,7 +5,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
-import java.util.Set;
 
 import org.apache.log4j.Logger;
 
