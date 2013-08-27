@@ -102,6 +102,31 @@ public class StringIteratorTest {
 	}	
 	
 	/*
+	 * test with file1 and file2
+	 * file with several lines in comment
+	 */
+	@Test
+	public void testWithFile1And2And3() throws IOException  {
+		StringIterator iterator = null;
+		try {
+			Set<String> fileNames = new HashSet<String>();
+			fileNames.add("../src/main/resources/file1.txt");
+			fileNames.add("../src/main/resources/file2.txt");
+			fileNames.add("../src/main/resources/file3.txt");
+			iterator = new StringIterator(fileNames);
+			int counter = 0;
+			
+			while(iterator.hasNext()) {
+				assertNotNull(iterator.next());
+				counter++;
+			}
+			assertEquals(counter,7L);
+		} finally {
+			iterator.close();
+		}	
+	}
+	
+	/*
 	 * test with file3
 	 * file with all lines in comment
 	 */
