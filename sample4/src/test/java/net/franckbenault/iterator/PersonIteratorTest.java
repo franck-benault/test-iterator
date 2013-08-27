@@ -3,6 +3,8 @@ package net.franckbenault.iterator;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -35,7 +37,9 @@ public class PersonIteratorTest {
 	public void testWithFile1() throws IOException  {
 		PersonIterator iterator = null;
 		try {
-			iterator = new PersonIterator("../src/main/resources/file1.txt");
+			Set<String> fileNames = new HashSet<String>();
+			fileNames.add("../src/main/resources/file1.txt");
+			iterator = new PersonIterator(fileNames);
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -57,7 +61,9 @@ public class PersonIteratorTest {
 	public void testWithFile2() throws IOException  {
 		PersonIterator iterator = null;
 		try {
-			iterator = new PersonIterator("../src/main/resources/file2.txt");
+			Set<String> fileNames = new HashSet<String>();
+			fileNames.add("../src/main/resources/file2.txt");
+			iterator = new PersonIterator(fileNames);
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -71,6 +77,32 @@ public class PersonIteratorTest {
 			iterator.close();
 		}	
 	}
+	
+	/*
+	 * test with file1 and 2
+	 * file with several lines in comment
+	 */
+	@Test
+	public void testWithFile1And2() throws IOException  {
+		PersonIterator iterator = null;
+		try {
+			Set<String> fileNames = new HashSet<String>();
+			fileNames.add("../src/main/resources/file1.txt");
+			fileNames.add("../src/main/resources/file2.txt");
+			iterator = new PersonIterator(fileNames);
+			int counter = 0;
+			
+			while(iterator.hasNext()) {
+				Person person = iterator.next();
+				System.out.println(person);
+				assertNotNull(person);
+				counter++;
+			}
+			assertEquals(counter,5L);
+		} finally {
+			iterator.close();
+		}	
+	}
 
 	/*
 	 * test with file3
@@ -80,7 +112,9 @@ public class PersonIteratorTest {
 	public void testWithFile3() throws IOException  {
 		PersonIterator iterator = null;
 		try {
-			iterator = new PersonIterator("../src/main/resources/file3.txt");
+			Set<String> fileNames = new HashSet<String>();
+			fileNames.add("../src/main/resources/file3.txt");
+			iterator = new PersonIterator(fileNames);
 			int counter = 0;
 			
 			while(iterator.hasNext()) {
@@ -98,7 +132,9 @@ public class PersonIteratorTest {
 		
 		PersonIterator iterator = null;
 		try {
-			iterator = new PersonIterator("WrongFileName");
+			Set<String> fileNames = new HashSet<String>();
+			fileNames.add("WrongFileName");
+			iterator = new PersonIterator(fileNames);
 			int counter = 0;
 			
 			while(iterator.hasNext()) {

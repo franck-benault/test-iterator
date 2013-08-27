@@ -16,12 +16,9 @@ public class PersonIterator implements Iterator<Person> {
 	private Person person;
 	private StringIterator stringIterator;
 	
-	public PersonIterator(String fileNameInput) throws IOException {
-		logger.info("open file "+fileNameInput);
-		
-		Set<String> fileNamesInput = new HashSet<String>();
-		fileNamesInput.add(fileNameInput);
-		
+	public PersonIterator(Set<String> fileNamesInput) throws IOException {
+		logger.info("PersonIterator built");
+				
 		stringIterator = new StringIterator(fileNamesInput);
 	    
 	    person = getNextValidPerson(); 
